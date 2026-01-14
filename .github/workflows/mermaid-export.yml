@@ -45,7 +45,7 @@ jobs:
           if git status --porcelain | grep -E '\.png$' >/dev/null; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add docs/**/*.png
+            git add -A docs
             git commit -m "chore: render mermaid diagrams"
             git push
           else
