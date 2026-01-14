@@ -1,3 +1,8 @@
+-- Inputs:
+--   ecommerce.recent_orders
+--   ecommerce.customers
+-- Outputs:
+--   ecommerce.orders_with_customers
 -- Transform: join orders with customers (dummy)
 -- Output feeds into 03.sql via the ecommerce.orders_with_customers table.
 DELETE FROM ecommerce.orders_with_customers;

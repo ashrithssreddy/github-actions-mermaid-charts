@@ -1,3 +1,7 @@
+-- Inputs:
+--   ecommerce.orders
+-- Outputs:
+--   ecommerce.recent_orders
 -- Extract orders placed in the last 24 hours (dummy)
 -- Output feeds into 02.sql via the ecommerce.recent_orders table.
 DELETE FROM ecommerce.recent_orders;

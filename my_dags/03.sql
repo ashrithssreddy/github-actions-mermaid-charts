@@ -1,3 +1,7 @@
+-- Inputs:
+--   ecommerce.orders_with_customers
+-- Outputs:
+--   ecommerce.daily_revenue_by_tier
 -- Load: aggregate daily revenue by loyalty tier (dummy)
 INSERT INTO ecommerce.daily_revenue_by_tier
 SELECT
