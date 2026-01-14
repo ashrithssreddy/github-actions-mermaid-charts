@@ -24,17 +24,17 @@ with DAG(
     run_01 = PythonOperator(
         task_id="run_01_sql",
         python_callable=run_sql_file,
-        op_args=["01.sql"],
+        op_args=["01_extract_recent_orders.sql"],
     )
     run_02 = PythonOperator(
         task_id="run_02_sql",
         python_callable=run_sql_file,
-        op_args=["02.sql"],
+        op_args=["02_join_orders_customers.sql"],
     )
     run_03 = PythonOperator(
         task_id="run_03_sql",
         python_callable=run_sql_file,
-        op_args=["03.sql"],
+        op_args=["03_aggregate_revenue_by_tier.sql"],
     )
 
     run_01 >> run_02 >> run_03

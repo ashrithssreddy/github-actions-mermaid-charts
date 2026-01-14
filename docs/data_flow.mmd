@@ -1,23 +1,21 @@
 flowchart TD
   ecommerce_orders[ecommerce.orders]
   ecommerce_customers[ecommerce.customers]
-  ecommerce_order_sources[ecommerce.order_sources]
 
-  sql_01{{01.sql}}
+  sql_01{{01_extract_recent_orders.sql}}
 
   ecommerce_recent_orders[ecommerce.recent_orders]
 
-  sql_02{{02.sql}}
+  sql_02{{02_join_orders_customers.sql}}
 
   ecommerce_orders_with_customers[ecommerce.orders_with_customers]
 
-  sql_03{{03.sql}}
+  sql_03{{03_aggregate_revenue_by_tier.sql}}
 
   ecommerce_daily_revenue_by_tier[ecommerce.daily_revenue_by_tier]
   ecommerce_loyalty_tier_targets[ecommerce.loyalty_tier_targets]
 
   ecommerce_orders --> sql_01
-  ecommerce_order_sources --> sql_01
   sql_01 --> ecommerce_recent_orders
   ecommerce_recent_orders --> sql_02
   ecommerce_customers --> sql_02
@@ -32,7 +30,6 @@ flowchart TD
 
   style ecommerce_orders fill:#ffffff,stroke:#333333,stroke-width:1px
   style ecommerce_customers fill:#ffffff,stroke:#333333,stroke-width:1px
-  style ecommerce_order_sources fill:#ffffff,stroke:#333333,stroke-width:1px
   style ecommerce_recent_orders fill:#ffffff,stroke:#333333,stroke-width:1px
   style ecommerce_orders_with_customers fill:#ffffff,stroke:#333333,stroke-width:1px
   style ecommerce_daily_revenue_by_tier fill:#ffffff,stroke:#333333,stroke-width:1px

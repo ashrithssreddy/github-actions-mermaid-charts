@@ -4,7 +4,7 @@
 -- Outputs:
 --   ecommerce.orders_with_customers
 -- Transform: join orders with customers (dummy)
--- Output feeds into 03.sql via the ecommerce.orders_with_customers table.
+-- Output feeds into 03_aggregate_revenue_by_tier.sql via the ecommerce.orders_with_customers table.
 DELETE FROM ecommerce.orders_with_customers;
 INSERT INTO ecommerce.orders_with_customers
 SELECT

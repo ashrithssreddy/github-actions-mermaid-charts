@@ -1,4 +1,4 @@
--- Tables updated by 01.sql, 02.sql, 03.sql
+-- Tables updated by 01_extract_recent_orders.sql, 02_join_orders_customers.sql, 03_aggregate_revenue_by_tier.sql
 CREATE TABLE IF NOT EXISTS ecommerce.recent_orders (
   order_id BIGINT,
   customer_id BIGINT,
