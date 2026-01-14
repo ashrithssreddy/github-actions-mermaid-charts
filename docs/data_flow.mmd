@@ -13,6 +13,7 @@ flowchart TD
   sql_03{{03.sql}}
 
   ecommerce_daily_revenue_by_tier[ecommerce.daily_revenue_by_tier]
+  ecommerce_loyalty_tier_targets[ecommerce.loyalty_tier_targets]
 
   ecommerce_orders --> sql_01
   sql_01 --> ecommerce_recent_orders
@@ -20,6 +21,7 @@ flowchart TD
   ecommerce_customers --> sql_02
   sql_02 --> ecommerce_orders_with_customers
   ecommerce_orders_with_customers --> sql_03
+  ecommerce_loyalty_tier_targets --> sql_03
   sql_03 --> ecommerce_daily_revenue_by_tier
 
   style sql_01 fill:#e6f3ff,stroke:#0066cc,stroke-width:2px
@@ -31,5 +33,6 @@ flowchart TD
   style ecommerce_recent_orders fill:#ffffff,stroke:#333333,stroke-width:1px
   style ecommerce_orders_with_customers fill:#ffffff,stroke:#333333,stroke-width:1px
   style ecommerce_daily_revenue_by_tier fill:#ffffff,stroke:#333333,stroke-width:1px
+  style ecommerce_loyalty_tier_targets fill:#ffffff,stroke:#333333,stroke-width:1px
 
 
