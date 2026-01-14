@@ -27,12 +27,17 @@ jobs:
 
       - name: Render .mmd to .png
         run: |
+          cat <<'EOF' > /tmp/puppeteer-config.json
+          {
+            "args": ["--no-sandbox", "--disable-setuid-sandbox"]
+          }
+          EOF
           shopt -s globstar
           for file in docs/**/*.mmd; do
             [ -f "$file" ] || continue
             out="${file%.mmd}.png"
             echo "Rendering $file -> $out"
-            mmdc -i "$file" -o "$out"
+            mmdc -p /tmp/puppeteer-config.json -i "$file" -o "$out"
           done
 
       - name: Commit rendered images
