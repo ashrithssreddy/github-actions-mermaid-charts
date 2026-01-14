@@ -1,0 +1,49 @@
+name: Export Mermaid Diagrams
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  export-mermaid:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Mermaid CLI
+        run: npm install -g @mermaid-js/mermaid-cli
+
+      - name: Render .mmd to .png
+        run: |
+          shopt -s globstar
+          for file in docs/**/*.mmd; do
+            [ -f "$file" ] || continue
+            out="${file%.mmd}.png"
+            echo "Rendering $file -> $out"
+            mmdc -i "$file" -o "$out"
+          done
+
+      - name: Commit rendered images
+        run: |
+          if git status --porcelain | grep -E '\.png$' >/dev/null; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add docs/**/*.png
+            git commit -m "chore: render mermaid diagrams"
+            git push
+          else
+            echo "No PNG changes to commit."
+          fi
+
