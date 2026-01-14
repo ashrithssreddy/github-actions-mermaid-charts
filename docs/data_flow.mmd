@@ -6,7 +6,6 @@ flowchart TD
 
   ecommerce_recent_orders[ecommerce.recent_orders]
 
-  spacer_inputs_02[ ]
   sql_02{{02.sql}}
 
   ecommerce_orders_with_customers[ecommerce.orders_with_customers]
@@ -17,9 +16,8 @@ flowchart TD
 
   ecommerce_orders --> sql_01
   sql_01 --> ecommerce_recent_orders
-  ecommerce_recent_orders --> spacer_inputs_02
-  ecommerce_customers --> spacer_inputs_02
-  spacer_inputs_02 --> sql_02
+  ecommerce_recent_orders --> sql_02
+  ecommerce_customers --> sql_02
   sql_02 --> ecommerce_orders_with_customers
   ecommerce_orders_with_customers --> sql_03
   sql_03 --> ecommerce_daily_revenue_by_tier
@@ -34,5 +32,4 @@ flowchart TD
   style ecommerce_orders_with_customers fill:#ffffff,stroke:#333333,stroke-width:1px
   style ecommerce_daily_revenue_by_tier fill:#ffffff,stroke:#333333,stroke-width:1px
 
-  style spacer_inputs_02 fill:transparent,stroke:transparent
 
